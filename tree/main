@@ -1,0 +1,614 @@
+{
+    "title": "dp",
+    "dataTable": "fact_data",
+    "datasetID": 4,
+    "background-color": "#0387B0",
+    "isDirectNavigation": true,
+    "app-alerts": {
+        "futureAlertMessage": "future-alert-message",
+        "downTimeMessage":"down-time-message",
+        "minuteMinutes": "minute-minutes",
+        "lessThanAMinute": "less-than-a-minute",
+        "hour": "hour",
+        "hours": "hours",
+        "and": "and",
+        "minute": "minute",
+        "minutes": "minutes",
+        "to": "to"
+    },
+    "planning-hub": {
+      "title":"planning-hub",
+      "grid": {
+        "title":"planning-hub-grid-title",
+        "searchLabel":"planning-hub-grid-search",
+        "columns": [
+          {
+            "field": "name",
+            "headerName": "name"
+          },
+          {
+            "field": "status",
+            "headerName": "workflow-status",
+            "width": 230
+          },
+          {
+            "field": "scope",
+            "headerName": "scope"
+          }
+        ],
+        "statusIcons": [
+          {
+            "title": "Submitted",
+            "icon": "fas fa-upload",
+            "color": "#757575"
+          },
+          {
+            "title": "Approved",
+            "icon": "fas fa-check-square",
+            "color": "#58DA67"
+          },
+          {
+            "title": "Rejected",
+            "icon": "fas fa-exclamation-triangle",
+            "color": "#E11A01"
+          },
+          {
+            "title": "Reviewed",
+            "icon": "fas fa-upload",
+            "color": "#757575"
+          },
+          {
+            "title": "Published",
+            "icon": "fas fa-check-circle",
+            "color": "#0387B0"
+          },
+          {
+            "title": "Planning",
+            "icon": "fas fa-pencil-alt",
+            "color": "#757575"
+          }
+        ]
+      }
+    },
+    "toolbarConfig": {
+      "back":{
+        "show": false,
+        "title": "back",
+        "options": [],
+        "showOptions": true
+      },
+      "toolbarIcons": [
+        
+      ],
+      "toolbarNavigationIcon": [
+        {
+          "title": "dashboard",
+          "url": "demand-planning/executive-dashboard",
+          "icon": "fas fa-th-large",
+          "iconPath": "assets/icon/dashboard.svg"
+        },
+        {
+          "title": "new-item-clone",
+          "url": "/demand-planning/new-item-clone",
+          "icon": "fas fa-network-wired",
+          "iconPath": "assets/icon/planningHub.svg"
+        }
+      ],
+      "toolbarLinks": [
+        {
+          "title": "view-filter-summary",
+          "action": "filterSummary",
+          "show": false
+        },
+        {
+          "title": "hide-filter-summary",
+          "action": "hideFilterSummary",
+          "show": false
+        },
+        {
+          "title": "reapply-filters",
+          "action": "reApplyFilter",
+          "show": false
+        }
+      ]
+    },
+    "queryConfig": {
+      "query": "daDataQuery",
+      "datatable": "user_access_data",
+      "hubType": ["PLANNING_WORKBOOK","DRIVER_ANALYSIS","OUTLIER_CORRECTION"],
+      "dashboardType": ["DASHBOARD"],
+      "dimensionLevels": ["workbook","template","scope"],
+      "aggregatedMeasures": ["can_write"],
+      "first": 200
+    },
+    "new-item-clone": {
+      "datasetID": 7,
+      "allowedDecimal": 2,
+      "maxExportRows": 50000,
+      "queryConfig": {
+        "getNewProducts": {
+          "datatable": [
+            "clone_data",
+            "clone_weightage_data"
+          ]
+        },
+        "getSurrogateProducts": {
+          "datatable": [
+            "clone_data",
+            "clone_weightage_data"
+          ]
+        },
+        "getVendor": {
+          "datatable": "",
+          "dimension": "vendor",
+          "dimensionLevels": [
+            "vendor"
+          ],
+          "searchDimension": "description",
+          "sort": [
+            {
+              "columnName": "vendor",
+              "direction": "ASC",
+              "columnType": "NAME"
+            }
+          ],
+          "first": 30
+        }
+      },
+      "filter": {
+        "selectAllLabel": "select-all",
+        "tabs": [
+          {
+            "dimension": "product",
+            "label": "filter-tab-product-label",
+            "selected": true,
+            "displayField": "name",
+            "dataTable": "product_vendor",
+            "listSearchColumn": "external_id",
+            "defaultSelection": {
+              "dimensionLevel": "merchandise_div",
+              "offset": 0
+            },
+            "showSearchView": {
+              "placeholder": "press-enter-to-search"
+            },
+            "aggregationCheckBox": {
+              "hide": false,
+              "isAggregate": true,
+              "title": "aggregate-values"
+            },
+            "data": [
+              {
+                "name": "hierarchy",
+                "label": "filter-dimension-hierarchy-label",
+                "dimensionLevels": [
+                  {
+                    "dataTable": "product_vendor",
+                    "dimensionLevel": "merchandise_div",
+                    "label": "filter-dimenstion-level-mercdiv-label",
+                    "isMultiselect": true,
+                    "level": 4,
+                    "showBadgeCount": false,
+                    "first": 30,
+                    "sort": [
+                      {
+                        "columnName": "",
+                        "direction": "ASC",
+                        "columnType": "NAME"
+                      }
+                    ]
+                  },
+                  {
+                    "dataTable": "product_vendor",
+                    "dimensionLevel": "opstudy",
+                    "label": "filter-dimenstion-level-opstudy-label",
+                    "isMultiselect": true,
+                    "level": 3,
+                    "showBadgeCount": false,
+                    "first": 30,
+                    "sort": [
+                      {
+                        "columnName": "",
+                        "direction": "ASC",
+                        "columnType": "NAME"
+                      }
+                    ]
+                  },
+                  {
+                    "dataTable": "product_vendor",
+                    "dimensionLevel": "prod_cat",
+                    "label": "filter-dimenstion-level-prodcat-label",
+                    "isMultiselect": true,
+                    "level": 2,
+                    "showBadgeCount": false,
+                    "first": 30,
+                    "sort": [
+                      {
+                        "columnName": "",
+                        "direction": "ASC",
+                        "columnType": "NAME"
+                      }
+                    ]
+                  },
+                  {
+                    "dataTable": "product_vendor",
+                    "dimensionLevel": "product",
+                    "label": "filter-dimenstion-level-product-label",
+                    "isMultiselect": true,
+                    "level": 1,
+                    "showBadgeCount": false,
+                    "first": 30,
+                    "sort": [
+                      {
+                        "columnName": "",
+                        "direction": "ASC",
+                        "columnType": "NAME"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "attribute",
+                "label": "filter-attribute-label",
+                "dimensionLevels": [
+                  {
+                    "dataTable": "product_vendor",
+                    "dimensionLevel": "brand",
+                    "label": "filter-attribute-brand-label",
+                    "isMultiselect": true,
+                    "level": 0,
+                    "showBadgeCount": false,
+                    "first": 30,
+                    "sort": [
+                      {
+                        "columnName": "",
+                        "direction": "ASC",
+                        "columnType": "NAME"
+                      }
+                    ]
+                  },
+                  {
+                    "dataTable": "product_vendor",
+                    "dimensionLevel": "private_brand",
+                    "label": "filter-attribute-private-brand-label",
+                    "isMultiselect": true,
+                    "level": 0,
+                    "showBadgeCount": false,
+                    "first": 30,
+                    "sort": [
+                      {
+                        "columnName": "",
+                        "direction": "ASC",
+                        "columnType": "NAME"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "filterPills": {
+        "noRecordsSelectedLabel": "none",
+        "pills": [
+          {
+            "dimension": "product",
+            "label": "product",
+            "allSelectedLabel": "all-products",
+            "resetLabel": "reset",
+            "showAll": true
+          }
+        ]
+      },
+      "tabs": [
+        {
+          "uiType": "new-ui",
+          "title": "new-item-clone",
+          "hideDimensions": [
+            "time"
+          ],
+          "viewStructure": [
+            {
+              "type": "complexFilters",
+              "widthClass": "col-12",
+              "initialDisplay": true,
+              "forecastWeekRange": 13,
+              "config": {
+                "title": "filter-title",
+                "titleKey": "complexFilter1",
+                "filterQueryConfig": [
+                  {
+                    "title": "vendor",
+                    "all-label": "all-vendors",
+                    "dataSource": "getVendor",
+                    "dataIndex": 0,
+                    "dependentDimensions": [
+                      "product",
+                      "location"
+                    ],
+                    "dropdownType": "multiSelect",
+                    "display": "description",
+                    "showSearch": true
+                  }
+                ],
+                "dependentComponentIndex": [
+                  1,
+                  2
+                ]
+              }
+            },
+            {
+              "type": "grid",
+              "widthClass": "col-12",
+              "initialDisplay": false,
+              "config": {
+                "title": "select-new-product",
+                "field": "newProduct",
+                "type": "simple-grid",
+                "gridColumnSize": "auto",
+                "minColumnWidth": 100,
+                "hide": true,
+                "resizable": true,
+                "sortable": true,
+                "rowSelection": "multiple",
+                "dataSource": "getNewProducts",
+                "statusValues": ["1"],
+                "buttons": [
+                  {
+                    "label": "reset",
+                    "action": "reset",
+                    "disabled": false
+                  }
+                ],
+                "gridIcons": {
+                  "icons": [
+                    {
+                      "name": "export",
+                      "tooltip": "export",
+                      "showTitle": false,
+                      "show": true,
+                      "disable": false,
+                      "icon": "fa-download"
+                    }
+                  ]
+                },
+                "pagination": {
+                  "show": true,
+                  "options": [
+                    {
+                      "label": "view-10-rows",
+                      "value": 10,
+                      "selected": true
+                    },
+                    {
+                      "label": "view-20-rows",
+                      "value": 20,
+                      "selected": false
+                    }
+                  ]
+                },
+                "columns": [
+                  {
+                    "width": 150,
+                    "type": "checkbox",
+                    "title": "select",
+                    "field": "keep-lock",
+                    "show": true,
+                    "defaultSelected": false,
+                    "headerCheckbox": false,
+                    "agg": ""
+                  },
+                  {
+                    "dimensionIndex": 0,
+                    "width": 490,
+                    "type": "dimensionLevel",
+                    "dimensionColumn": "product",
+                    "dimensionLevel": "product",
+                    "field": "product",
+                    "display": "name",
+                    "show": true,
+                    "agg": "",
+                    "sortOrder": [
+                      "asc",
+                      "desc",
+                      "null"
+                    ]
+                  },
+                  {
+                    "dimensionIndex": 0,
+                    "width": 490,
+                    "type": "dimensionLevel",
+                    "dimension": "product",
+                    "dimensionColumn": "description",
+                    "dimensionLevel": "product",
+                    "field": "product-description",
+                    "display": "description",
+                    "show": true,
+                    "agg": ""
+                  },
+                  {
+                    "measureIndex": 0,
+                    "width": 590,
+                    "type": "measure",
+                    "measure": "old_product_id",
+                    "field": "clone",
+                    "show": true,
+                    "agg": ""
+                  },
+                  {
+                    "measureIndex": 1,
+                    "width": 250,
+                    "type": "measure",
+                    "measure": "weightage",
+                    "field": "weightage",
+                    "show": false,
+                    "agg": ""
+                  },
+                  {
+                    "width": 170,
+                    "type": "",
+                    "field": "action",
+                    "icon": "trash.svg",
+                    "show": true,
+                    "action": "delete",
+                    "export": false,
+                    "actionColumn": "product"
+                  }
+                ],
+                "eventTransmitter": [
+                  "datafilter"
+                ],
+                "eventReceiver": [
+                  "datafilter"
+                ],
+                "dependentComponentIndex": [
+                  2
+                ]
+              }
+            },
+            {
+              "type": "grid",
+              "widthClass": "col-12",
+              "initialDisplay": false,
+              "config": {
+                "title": "select-surrogate-products",
+                "field": "oldProduct",
+                "type": "simple-grid",
+                "gridColumnSize": "auto",
+                "minColumnWidth": 100,
+                "hide": true,
+                "resizable": true,
+                "sortable": true,
+                "rowSelection": "multiple",
+                "dataSource": "getSurrogateProducts",
+                "statusValues": ["2","3"],
+                "gridIcons": {
+                  "icons": [
+                    {
+                      "name": "export",
+                      "tooltip": "export",
+                      "showTitle": false,
+                      "show": true,
+                      "disable": false,
+                      "icon": "fa-download"
+                    }
+                  ]
+                },
+                "pagination": {
+                  "show": true,
+                  "options": [
+                    {
+                      "label": "view-10-rows",
+                      "value": 10,
+                      "selected": true
+                    },
+                    {
+                      "label": "view-20-rows",
+                      "value": 20,
+                      "selected": false
+                    }
+                  ]
+                },
+                "buttons": [
+                  {
+                    "label": "reset",
+                    "action": "reset",
+                    "disabled": false
+                  },
+                  {
+                    "label": "clone",
+                    "action": "clone",
+                    "disabled": true
+                  }
+                ],
+                "columns": [
+                  {
+                    "width": 150,
+                    "type": "checkbox",
+                    "title": "select",
+                    "field": "keep-lock",
+                    "show": true,
+                    "defaultSelected": false,
+                    "headerCheckbox": false,
+                    "agg": ""
+                  },
+                  {
+                    "measureIndex": 3,
+                    "width": 240,
+                    "field": "weight",
+                    "type": "weight",
+                    "show": true,
+                    "edit": true,
+                    "agg": ""
+                  },
+                  {
+                    "dimensionIndex": 0,
+                    "width": 300,
+                    "type": "dimensionLevel",
+                    "dimensionColumn": "product",
+                    "dimensionLevel": "product",
+                    "field": "product",
+                    "display": "name",
+                    "show": true,
+                    "agg": "",
+                    "sortOrder": [
+                      "asc",
+                      "desc",
+                      "null"
+                    ]
+                  },
+                  {
+                    "dimensionIndex": 0,
+                    "width": 300,
+                    "type": "dimensionLevel",
+                    "dimension": "product",
+                    "dimensionColumn": "description",
+                    "dimensionLevel": "product",
+                    "field": "product-description",
+                    "display": "description",
+                    "show": true,
+                    "agg": ""
+                  },
+                  {
+                    "measureIndex": 0,
+                    "width": 300,
+                    "type": "measure",
+                    "measure": "sum_st_ty",
+                    "field": "sell-thru",
+                    "show": true,
+                    "agg": ""
+                  },
+                  {
+                    "measureIndex": 1,
+                    "width": 300,
+                    "type": "measure",
+                    "measure": "sum_st_ly",
+                    "field": "sell-thru-ly",
+                    "show": true,
+                    "agg": ""
+                  },
+                  {
+                    "measureIndex": 2,
+                    "width": 300,
+                    "type": "measure",
+                    "measure": "sum_st_base_fcst",
+                    "field": "sell-thru-base-fc",
+                    "show": true,
+                    "agg": ""
+                  }
+                ],
+                "eventTransmitter": [
+                  "datafilter"
+                ],
+                "eventReceiver": [
+                  "datafilter"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
